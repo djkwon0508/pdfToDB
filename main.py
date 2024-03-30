@@ -36,6 +36,14 @@ def extract_shapes_from_image(image_path):
                 shape_count += 1
 
 
+# 이미지에서 텍스트를 추출하는 함수
+def extract_text_from_image(image_path):
+    img = Image.open(image_path)
+    text = pytesseract.image_to_string(img)
+    with open(f"{image_path}.txt", "w") as text_file:
+        text_file.write(text)
+
+
 # PDF를 이미지로 변환하고 각 이미지에서 도형을 추출하여 이미지로 저장하는 함수
 def pdf_to_images_with_shapes(pdf_path, output_path, dpi=200):
     if not os.path.exists(output_path):
@@ -62,6 +70,7 @@ def pdf_to_images_with_shapes(pdf_path, output_path, dpi=200):
             image.save(image_path, "JPEG")
 
             extract_shapes_from_image(image_path)
+            extract_text_from_image(image_path)
 
 
 if __name__ == "__main__":
