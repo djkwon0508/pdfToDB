@@ -75,6 +75,6 @@ def pdf_to_images_with_shapes(pdf_path, output_path, dpi=200):
 
 if __name__ == "__main__":
     # PDF 파일을 이미지로 변환하고 도형을 추출하여 이미지로 저장합니다.
-    pdf_path = "input.pdf"
+    pdf_path = "*.pdf"
     output_path = "output"
     pdf_to_images_with_shapes(pdf_path, output_path)
